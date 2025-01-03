@@ -48,10 +48,9 @@ func parseLine(line string) (TraceRouteResult, error) {
 		}
 		result.Timeout = append(result.Timeout, timeout)
 	}
-
+	log.Println("result: ", result)
 	return result, nil
 }
-
 
 // GenerateTracerouteJSON 生成Traceroute的JSON格式
 func Traceroute(target string, params TraceRouteRequest) (responseChan chan []byte, errChan chan error) {

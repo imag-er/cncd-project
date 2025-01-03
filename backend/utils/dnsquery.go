@@ -37,11 +37,11 @@ func dnsquery(target string,params DNSQueryRequest) (outputChan chan string,errC
 		defer close(errChan)
 
 		// path := filepath.Join(getCurrentFileDirname(), "traceroute")
-		cmd := exec.Command("cppmodules/dnsquery")
+		cmd := exec.Command("cppmodules/dnsquery",target,"0")
 
 		log.Println(cmd.String())
 
-		stdinPipe, _ := cmd.StdinPipe()
+		// stdinPipe, _ := cmd.StdinPipe()
 		stdoutPipe, err := cmd.StdoutPipe()
 
 		if err != nil {
@@ -54,7 +54,7 @@ func dnsquery(target string,params DNSQueryRequest) (outputChan chan string,errC
 			return
 		}
 
-		stdinPipe.Write([]byte(target + "\n"))
+		// stdinPipe.Write([]byte(target + "\n"))
 
 		scanner := bufio.NewScanner(stdoutPipe)
 

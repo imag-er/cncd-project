@@ -1,15 +1,15 @@
 <script>
+	import CheckBackend from "./components/CheckBackend.svelte";
 	import DnsQueryView from "./components/DnsQueryView.svelte";
 	import PortScanView from "./components/PortScanView.svelte";
 	import TraceRouteView from "./components/TraceRouteView.svelte";
 	let componentsToRender = [];
 	let targetIP = "39.156.66.10";
 	targetIP = "8.134.50.24";
-	targetIP = "www.baidu.com"
-
+	targetIP = "www.baidu.com";
 
 	function renderComponent(component) {
-		componentsToRender = [...componentsToRender,component];
+		componentsToRender = [...componentsToRender, component];
 	}
 
 	function getReport() {
@@ -59,19 +59,22 @@
 	>
 	<button
 		on:click={() => renderComponent(TraceRouteView)}
-		disabled={!isValidIP}>TraceRoute</button
+		disabled={!(isValidIP || isValidHostname)}>TraceRoute</button
 	>
 	<button on:click={() => renderComponent(PortScanView)} disabled={!isValidIP}
 		>端口扫描</button
 	>
 
-	<button on:click={getReport} disabled={componentsToRender.length == 0}>生成报告</button>
+	<button on:click={getReport} disabled={componentsToRender.length == 0}
+		>生成报告</button
+	>
 
 	<button on:click={clearReport}>清空</button>
 
 	<script
 		src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"
 	></script>
+	<CheckBackend />
 	<div id="report-element">
 		{#each componentsToRender as component}
 			<div class="fade">

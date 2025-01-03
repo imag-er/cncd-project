@@ -13,7 +13,7 @@ type WebSocketRequest struct {
 type TraceRouteRequest struct {
 	First_ttl int `json:"first_ttl"`
 	Max_ttl int `json:"max_ttl"`
-	WaitTime int `json:"wait"`
+	WaitTime int `json:"wait_time"`
 	MaxTimeout int `json:"max_timeout"`
 	Nqueries int `json:"nqueries"`
 
@@ -36,4 +36,9 @@ type TraceRouteResult struct {
 	Hop     int    `json:"hop"`
 	Address string `json:"address"`
 	Timeout []int  `json:"timeout"`
+}
+
+
+type ActiveScanRequest struct {
+	mask string // CIDR或者子网掩码
 }

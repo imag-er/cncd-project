@@ -10,8 +10,13 @@ func main() {
 	log.Println("Started")
 
 	r := gin.Default()
+	
+	r.Use(handler.CORSMiddleware())
+
+
 	r.GET("/ws", handler.WSHandler)
 	r.GET("/ping", handler.PingHandler)
+
 
 	err := r.Run("localhost:8000")
 	if err != nil {

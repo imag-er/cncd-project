@@ -3,10 +3,11 @@ CC_ARGS = -Wall -std=c++17
 
 ALL: traceroute dnsquery
 
-traceroute: tr.cpp
+
+traceroute: tracert.cpp
 	g++ -o $@ $^ $(CC_ARGS)
 
-dnsquery: dns.cpp
+dnsquery: dns_query.cpp
 	g++ -o $@ $^ $(CC_ARGS)
 
 @PHONY: clean

@@ -4,7 +4,9 @@ go 1.21
 
 require (
 	github.com/gin-gonic/gin v1.7.4
+	github.com/google/gopacket v1.1.19
 	github.com/gorilla/websocket v1.4.2
+	github.com/j-keck/arping v1.0.3
 )
 
 require (
